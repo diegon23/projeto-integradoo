@@ -50,7 +50,7 @@
             <a href="#" class="pull-right">Esqueci Minha Senha</a>
         </div>        
     </form>
-    <p class="text-center"><a href="#">Cadastrar-se</a></p>
+    <p class="text-center"><a href="view/cadastro/cadastro.html">Cadastrar-se</a></p>
 </div>
 </body>
 </html>                                		                            

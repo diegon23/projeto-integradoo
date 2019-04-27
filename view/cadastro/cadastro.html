@@ -34,20 +34,20 @@
                     <h2 class="title">Cadastro de Usuário</h2>
                 </div>
                 <div class="card-body">
-                    <form method="POST">
+                    <form method="POST" action = "../../controller/cadastroController.php">
                         <div class="form-row m-b-55">
                             <div class="name">Nome</div>
                             <div class="value">
                                 <div class="row row-space">
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="first_name">
+                                            <input class="input--style-5" type="text" name="primeiro_nome">
                                             <label class="label--desc">Primeiro nome</label>
                                         </div>
                                     </div>
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="last_name">
+                                            <input class="input--style-5" type="text" name="ultimo_nome">
                                             <label class="label--desc">Último nome</label>
                                         </div>
                                     </div>
@@ -58,7 +58,7 @@
                             <div class="name">Senha</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="password" name="company">
+                                    <input class="input--style-5" type="password" name="senha">
                                 </div>
                             </div>
                         </div>
@@ -70,19 +70,27 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="form-row">
+                            <div class="name">CPF</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="text" name="cpf">
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-row m-b-55">
                             <div class="name">Seu Número</div>
                             <div class="value">
                                 <div class="row row-refine">
                                     <div class="col-3">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="area_code">
+                                            <input class="input--style-5" type="text" name="ddd">
                                             <label class="label--desc">DDD</label>
                                         </div>
                                     </div>
                                     <div class="col-9">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="phone">
+                                            <input class="input--style-5" type="text" name="telefone">
                                             <label class="label--desc">Telefone</label>
                                         </div>
                                     </div>
@@ -94,7 +102,7 @@
                             <div class="value">
                                 <div class="input-group">
                                     <div class="rs-select2 js-select-simple select--no-search">
-                                        <select name="subject">
+                                        <select name="tipo_usuario">
                                             <option disabled="disabled" selected="selected">Escolha uma opção...</option>
                                             <option>Locador</option>
                                             <option>Locatário</option>
