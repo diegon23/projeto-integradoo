@@ -34,13 +34,14 @@
 </head>
 <body>
 <div class="login-form">
-    <form action="/login/confirmation.php" method="post">
+	
+    <form action="controller/loginController.php" method="POST">
         <h2 class="text-center">Entrar</h2>       
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Login" required="required">
+            <input type="text" class="form-control" name = "login" required="required">
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" placeholder="Sua senha..." required="required">
+            <input type="password" class="form-control" name = "senha" required="required">
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-primary btn-block">Entrar</button>
@@ -51,6 +52,9 @@
         </div>        
     </form>
     <p class="text-center"><a href="view/cadastro/cadastro.html">Cadastrar-se</a></p>
+	<?php if(isset($_GET['mensagem'])){ 
+		echo '<p style= "color: red" class="text-center">'.$_GET['mensagem'].'</p>';
+	}?>
 </div>
 </body>
 </html>                                		                            
