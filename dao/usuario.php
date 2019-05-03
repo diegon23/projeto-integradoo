@@ -21,7 +21,7 @@
 	function getUserDb($login, $senha){
 		$conn = OpenCon();
 		$retorno = "";
-		$sqlConsulta = 'select * from usuario where cpf = '.$login.' and senha = '.$senha;
+		$sqlConsulta = 'select * from usuario where cpf = "'.$login.'" and senha = "'.$senha.'"';
 		$usuario = $conn->query($sqlConsulta);
 		if (isset($usuario) && $usuario != null && is_object($usuario) && $usuario->num_rows > 0) {
 			$retorno = $usuario->fetch_assoc();
@@ -31,10 +31,36 @@
 		return $retorno;
 	}
 	
-	function existeUsuario($login){
+	function getUserDbEmail($email){
 		$conn = OpenCon();
 		$retorno = "";
-		$sqlConsulta = 'select * from usuario where cpf = '.$login;
+		$sqlConsulta = 'select * from usuario where email = "'.$email.'"';
+		$usuario = $conn->query($sqlConsulta);
+		if (isset($usuario) && $usuario != null && is_object($usuario) && $usuario->num_rows > 0) {
+			$retorno = $usuario->fetch_assoc();
+		}
+		CloseCon($conn);
+		
+		return $retorno;
+	}
+	
+	function existeUsuarioCpfEmail($cpf, $email){
+		$conn = OpenCon();
+		$retorno = "";
+		$sqlConsulta = 'select * from usuario where cpf = "'.$cpf. '" or email = "'. $email.'"'; 
+		$usuario = $conn->query($sqlConsulta);
+		if (isset($usuario) && $usuario != null && is_object($usuario) && $usuario->num_rows > 0) {
+			return true;
+		}
+		CloseCon($conn);
+		
+		return false;
+	}
+	
+	function existeUsuarioEmail($email){
+		$conn = OpenCon();
+		$retorno = "";
+		$sqlConsulta = 'select * from usuario where email = '.$email;
 		$usuario = $conn->query($sqlConsulta);
 		if (isset($usuario) && $usuario != null && is_object($usuario) && $usuario->num_rows > 0) {
 			return true;

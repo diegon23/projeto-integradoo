@@ -30,31 +30,26 @@
         font-size: 15px;
         font-weight: bold;
     }
+	.text-center {
+  text-align: center;
+}
 </style>
 </head>
 <body>
 <div class="login-form">
 	
-    <form action="controller/loginController.php" method="POST">
-        <h2 class="text-center">Entrar</h2>       
+    <form name = "senha" action="../../controller/cadastroController.php" method="POST">
+        <h3 class="text-center">Informe seu e-mail</h3>       
         <div class="form-group">
-            <input type="text" class="form-control" name = "login" required="required">
+            <input type="email" class="form-control" name = "email" required="required">
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" name = "senha" required="required">
-        </div>
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+            <button type="submit" class="btn btn-primary btn-block">Enviar senha</button>
         </div>
         <div class="clearfix">
-            <label class="pull-left checkbox-inline"><input type="checkbox">Lembrar de mim</label>
-            <a href="view/senha/esqueci-senha.html" class="pull-right">Esqueci Minha Senha</a>
+            <a href="../../index.php" class="text-center">Voltar</a>
         </div>        
     </form>
-    <p class="text-center"><a href="view/cadastro/cadastro.html">Cadastrar-se</a></p>
-	<?php if(isset($_GET['mensagem'])){ 
-		echo '<p style= "color: red" class="text-center">'.$_GET['mensagem'].'</p>';
-	}?>
 </div>
 </body>
 </html>                                		                            
