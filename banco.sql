@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `nome` VARCHAR(100) NULL,
   `dt_cadastro` DATE NULL,
   `dt_cancelamento` DATE NULL,
-  `cpf` INT(11) NULL,
+  `cpf` VARCHAR(11) NULL,
   `telefone` INT(12) NULL,
   `senha` VARCHAR(20) NULL,
   `id_conta_corrente` INT NULL,

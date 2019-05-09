@@ -9,6 +9,17 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+
+<script>
+	function redirect(e){
+		if(e.id == "locador"){
+			window.location.href = "locador.html";
+		} else if(e.id == "locatario"){
+			window.location.href = "locatario.html";
+		}
+	}
+</script>
+
 <style type="text/css">
 	.login-form {
 		width: 340px;
@@ -32,8 +43,8 @@
         font-weight: bold;
     }
 	
-	#btnSearch,
-	#btnClear{
+	#locador,
+	#locatario{
 		display: inline-block;
 		vertical-align: top;
 	}
@@ -56,8 +67,8 @@
 <div class="row">
 	<h2 class="text-center">ESCOLHA SEU TIPO DE USUÁRIO</h2>
     <div class="col-sm-12 text-center">
-        <button id="btnSearch" class="btn btn-primary btn-md center-block" Style="width: 100px;" OnClick="btnSearch_Click" >button</button>
-         <button id="btnClear" class="btn btn-danger btn-md center-block" Style="width: 100px;" OnClick="btnClear_Click" >button</button>
+        <button id="locador" class="btn btn-primary btn-md center-block" Style="width: 100px;" OnClick="redirect(this)" >Locador</button>
+         <button id="locatario" class="btn btn-danger btn-md center-block" Style="width: 100px;" OnClick="redirect(this)" >Locatario</button>
      </div>
 </div>
 </body>

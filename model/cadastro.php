@@ -2,7 +2,9 @@
 	include_once("../dao/usuario.php");
 	
 	function saveUser($user){
-		
+		echo '<pre>';
+		var_dump($user);
+		echo '</pre>';
 		$user['nome'] = $user['primeiro_nome'].' '.$user['ultimo_nome'];
 		$user['telefone'] = $user['ddd'].' '.$user['telefone'];
 		
