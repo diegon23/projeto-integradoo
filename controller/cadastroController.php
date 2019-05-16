@@ -5,7 +5,7 @@
 		if(!existeUsuarioModel($dados)){
 			saveUser($dados);
 		} else {
-			header("Location: ../index.php?mensagem=Usuário já cadastrado com o cpf/email ".$dados['cpf']."!");
+			header("Location: ../index.php?mensagem=Usuário já cadastrado com o cpf/email ".$dados['cpf']." para o tipo ".$dados['tipo_usuario']."!");
 			die();
 		}
 			
