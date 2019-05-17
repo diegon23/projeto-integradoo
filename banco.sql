@@ -13,7 +13,8 @@ CREATE TABLE IF NOT EXISTS `produto` (
   `dt_cadastramento` DATE NULL,
   `dt_cancelamento` DATE NULL,
   `nr_seguro` INT NULL,
-  `foto` INT NULL,
+  `foto` VARCHAR(200) NULL,
+  `id_usuario` INT NOT NULL,
   `produtocol` VARCHAR(45) NULL,
   PRIMARY KEY (`id_produto`),
   UNIQUE INDEX `id_produto_UNIQUE` (`id_produto` ASC));
