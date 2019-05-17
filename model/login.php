@@ -9,9 +9,19 @@
 		return getUserDb($cpf, $senha);
 	}
 	
-	function encrypt( $q ) {
-		$cryptKey  = 'qJB0rGtIn5UB1xG03efyCp';
-		$qEncoded      = base64_encode( mcrypt_encrypt( MCRYPT_RIJNDAEL_256, md5( $cryptKey ), $q, MCRYPT_MODE_CBC, md5( md5( $cryptKey ) ) ) );
-		return( $qEncoded );
+	function encrypt( $string) {
+		$output = false;
+		$encrypt_method = "AES-256-CBC";
+		$secret_key = 'This is my secret key';
+		$secret_iv = 'This is my secret iv';
+		// hash
+		$key = hash('sha256', $secret_key);
+		
+		// iv - encrypt method AES-256-CBC expects 16 bytes - else you will get a warning
+		$iv = substr(hash('sha256', $secret_iv), 0, 16);
+		$output = openssl_encrypt($string, $encrypt_method, $key, 0, $iv);
+		$output = base64_encode($output);
+
+		return $output;
 	}
 ?>

@@ -23,8 +23,9 @@
 		$retorno = "";
 		$sqlConsulta = 'select * from usuario where cpf = "'.$login.'" and senha = "'.$senha.'"';
 		$usuario = $conn->query($sqlConsulta);
+		$retorno = array();
 		if (isset($usuario) && $usuario != null && is_object($usuario) && $usuario->num_rows > 0) {
-			while($row = mysqli_fetch_array($usuario, MYSQL_ASSOC)) {
+			while($row = mysqli_fetch_array($usuario, MYSQLI_ASSOC)) {
 				$retorno[] = $row;
 			}
 		}
