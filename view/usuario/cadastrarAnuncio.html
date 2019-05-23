@@ -11,10 +11,11 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
         <link rel="stylesheet" href="form.css" >
         <script src="form.js"></script>
-		  <meta charset="utf-8">
-		  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-		  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-		  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
 	<style>
 	
@@ -72,6 +73,13 @@ body
   cursor:pointer;
   font-size:15px;
 }
+
+.dropdown-menu-center {
+  left: 50% !important;
+  right: auto !important;
+  text-align: center !important;
+  transform: translate(-50%, 0) !important;
+}
 	
 	</style>
 	<script>
@@ -90,13 +98,13 @@ $(function() {
         if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
  
         if (/^image/.test( files[0].type)){ // only image file
-            var reader = new FileReader(); // instance of the FileReader
-            reader.readAsDataURL(files[0]); // read the local file
+			var reader = new FileReader(); // instance of the FileReader
+			reader.readAsDataURL(files[0]); // read the local file
  
-            reader.onloadend = function(){ // set image data as background of div
-                //alert(uploadFile.closest(".upimage").find('.imagePreview').length);
-uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url("+this.result+")");
-            }
+			reader.onloadend = function(){ // set image data as background of div
+				//alert(uploadFile.closest(".upimage").find('.imagePreview').length);
+			uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url("+this.result+")");
+			}
         }
       
     });
@@ -112,47 +120,36 @@ uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url(
 			<ul class="nav navbar-nav">
 			  <li><a href="homeLocador.html">Meus anúncios</a></li>
 			  <li><a href="#">Perfil</a></li>
-			  <li class="active"><a href="carros.html">Cadastrar Carros</a></li>
-			  <li><a href="cadastrarAnuncio.html">Cadastrar Anúncio</a></li>
+			  <li><a href="carros.html">Cadastrar Carros</a></li>
+			  <li class="active"><a href="cadastrarAnuncio.html">Cadastrar Anúncio</a></li>
 			</ul>
 		  </div>
 		</nav>
         <div class="container">
-            <div class="row">
                 <div class="col-md-6 col-md-offset-3">
-                    <h2>Salvar Carro</h2> 
-                    <p> Favor preencher as informações abaixo </p>
-                    <form enctype="multipart/form-data" role="form" method="post" action="carros.php">
+                    <h2 style="text-align:center">Salvar Carro</h2>
+                    <form role="form" method="post" action="cadastrarAnuncio.php">
                         <div class="row">
-                            <div class="col-sm-12 form-group">
-                                <label for="modelo"> Modelo do carro:</label>
-                                <input type="text" class="form-control" id="modelo" name="modelo" maxlength="50">
-                            </div>
-						</div>
-						<div class="container">
-						  <div class="row">
-							<div class="col-sm-3 imgUp">
-								<div class="imagePreview"></div>
-								<label class="btn btn-primary">
-									<input type="hidden" name="MAX_FILE_SIZE" value="3000000" />
-									Escolher imagem<input type="file" name="imagem" id="imagem" class="uploadFile img" value="Upload Photo" style="width:0px; height0px; overflow: hidden;">
-								</label>
+							<div class="dropdown" style="text-align: -webkit-center; padding: 2%">
+								<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Escolha o carro
+								<span class="caret"></span></button>
+								<ul class="dropdown-menu dropdown-menu-center">
+								  <li><a href="#">HTML</a></li>
+								</ul>
 							</div>
-							  <i class="fa fa-plus imgAdd"></i>
-                            <div class="col-sm-5 form-group">
-                                <label for="cor"> Cor:</label>
-                                <input type="text" class="form-control" id="cor" name="cor" maxlength="50">
-                            </div>
-                            <div class="col-sm-5 form-group">
-                                <label for="ano"> Ano:</label>
-                                <input type="text" class="form-control" id="ano" name="ano" maxlength="50">
-                            </div>
-                            <div class="col-sm-5 form-group">
-                                <label for="name"> Descrição:</label>
-                                <textarea class="form-control" type="textarea" id="descricao" name="descricao" placeholder="Descrição do carro..." maxlength="6000" rows="2"></textarea>
-                            </div>
 						</div>
-                        </div>
+						<div class="row form-inline" style="margin-left:20%; margin-top: 7%"> 
+							<label for="preco" class="col-sm-6 col-form-label col-form-label-sm text-left justify-content-start">
+							  Preço da diária:
+							</label>
+							<input type="text" style="margin-left:-15%; margin-bottom:3%" class="col-sm-8 form-control" id="preco" name="preco">
+						</div>
+						<div class="row" style="margin-left:10%"> 
+							<label style="margin-left:20%" for="local" class="col-sm-4 col-form-label col-form-label-sm text-left justify-content-start">
+							  Local de retirada/devolução:
+							</label>
+							<input style="margin-left:-5%; margin-bottom: 5%" type="text" class="col-sm-4 form-control" id="local" name="local">
+						</div>
                         <div class="row">
                             <div class="col-sm-12 form-group">
                                 <button type="submit" class="btn btn-lg btn-success btn-block" id="btnContactUs">Cadastrar</button>
@@ -160,7 +157,6 @@ uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url(
                         </div>
                     </form>
                 </div>
-            </div>
         </div>
     </body>
 </html>

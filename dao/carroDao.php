@@ -1,5 +1,5 @@
 <?php 
-	include_once("../db/db_connnection.php");
+	include_once(__DIR__."/../db/db_connnection.php");
 
 	function saveCarroDb($carro){
 		$conn = OpenCon();
