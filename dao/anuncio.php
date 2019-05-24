@@ -1,5 +1,5 @@
 <?php 
-	include_once("../db/db_connnection.php");
+	require_once __DIR__."/../db/db_connnection.php";
 
 	function saveAnuncioDb($anuncio){
 		$conn = OpenCon();
@@ -18,14 +18,14 @@
 		CloseCon($conn);
 	}
 	
-	function getUserDb($login, $senha){
+	function getAnunciosDb($idUsuario){
 		$conn = OpenCon();
 		$retorno = "";
-		$sqlConsulta = 'select * from usuario where cpf = "'.$login.'" and senha = "'.$senha.'"';
-		$usuario = $conn->query($sqlConsulta);
+		$sqlConsulta = 'select * from usuario_produto where id_usuario = '.$idUsuario;
+		$anuncios = $conn->query($sqlConsulta);
 		$retorno = array();
-		if (isset($usuario) && $usuario != null && is_object($usuario) && $usuario->num_rows > 0) {
-			while($row = mysqli_fetch_array($usuario, MYSQLI_ASSOC)) {
+		if (isset($anuncios) && $anuncios != null && is_object($anuncios) && $anuncios->num_rows > 0) {
+			while($row = mysqli_fetch_array($anuncios, MYSQLI_ASSOC)) {
 				$retorno[] = $row;
 			}
 		}
