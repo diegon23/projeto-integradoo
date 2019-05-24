@@ -2,11 +2,8 @@
 <?php
 	require_once __DIR__."\..\..\model\carroModel.php";
 	session_start();
-	if(sizeof($_SESSION["user"]) > 1){
-		$usuario = $_SESSION["user"][0]["id_usuario"];
-	} else{
-		$usuario = $_SESSION["user"]["id_usuario"];
-	}
+	$usuario = $_SESSION["user"][0]["id_usuario"];
+	
 	$carros = getCarrosUsuario($usuario);
 ?>
 <html lang="en">
