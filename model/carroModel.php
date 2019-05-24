@@ -5,4 +5,8 @@
 		return saveCarroDb($carro);
 	}
 	
+	function getCarrosUsuario($usuario){
+		return getCarrosUsuarioDb($usuario);
+	}
+	
 ?>

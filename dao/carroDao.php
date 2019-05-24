@@ -7,7 +7,7 @@
 		$sqlSalvar = 'insert into produto
 		(modelo, ano, dt_cadastramento, cor,  foto, id_usuario)
 		values
-		('.$carro['modelo'].', "'.$carro['ano'].'",  CURDATE(), "'.$carro['cor'].'", "'.$carro['foto'].'", "'.$carro['id_usuario'].'")';
+		("'.$carro['modelo'].'", "'.$carro['ano'].'",  CURDATE(), "'.$carro['cor'].'", "'.$carro['foto'].'", "'.$carro['id_usuario'].'")';
 		
 		if($conn->query($sqlSalvar) === TRUE){
 			
@@ -18,14 +18,17 @@
 		CloseCon($conn);
 	}
 	
-	function getCarroDb($idCarro){
+	function getCarrosUsuarioDb($idUsuario){
 		$conn = OpenCon();
-		$retorno = "";
-		$sqlConsulta = 'select * from usuario where cpf = "'.$login.'" and senha = "'.$senha.'"';
-		$usuario = $conn->query($sqlConsulta);
+		
+		$sqlConsulta = 'select * from produto where id_usuario = "'.$idUsuario.'" and dt_cancelamento is null';
+		
+		$carros = $conn->query($sqlConsulta);
+		
 		$retorno = array();
-		if (isset($usuario) && $usuario != null && is_object($usuario) && $usuario->num_rows > 0) {
-			while($row = mysqli_fetch_array($usuario, MYSQLI_ASSOC)) {
+		
+		if (isset($carros) && $carros != null && is_object($carros) && $carros->num_rows > 0) {
+			while($row = mysqli_fetch_array($carros, MYSQLI_ASSOC)) {
 				$retorno[] = $row;
 			}
 		}

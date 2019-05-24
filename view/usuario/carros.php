@@ -11,6 +11,8 @@ if (move_uploaded_file($_FILES["imagem"]["tmp_name"], $target_dir)) {
 	$carro['id_usuario'] = $_SESSION['user'][0]['id_usuario'];
 	saveCarro($carro);
 	
+	header("Location: carros.html");
+	
 } else {
     echo 'Erro ao fazer upload de imagem.';
 	echo '</br><a href="homeLocador.html">Voltar</a>';

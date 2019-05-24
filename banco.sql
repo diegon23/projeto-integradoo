@@ -100,13 +100,11 @@ CREATE TABLE IF NOT EXISTS `usuario_produto` (
   `id_produto` INT NULL,
   `dt_cadastro` DATE NULL,
   `dt_cancelamento` DATE NULL,
-  `tipo` VARCHAR(45) NULL,
   `valor_dia` DECIMAL NULL,
   `dt_inicio_disp` DATE NULL,
   `dt_fim_disp` DATE NULL,
   `dt_inicio_uso` DATE NULL,
   `dt_fim_uso` DATE NULL,
-  `dist_limit` INT NULL,
   PRIMARY KEY (`id_usuario_produto`))
 ;
 
