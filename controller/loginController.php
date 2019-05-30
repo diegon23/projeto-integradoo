@@ -12,7 +12,7 @@
 			die();
 		} else {
 			if($usuario[0]['id_tipo'] == 1){
-				header("Location: ../view/usuario/homeLocador.html");
+				header("Location: ../view/usuario/homeLocador.php");
 				die();
 			} else if($usuario[0]['id_tipo'] == 2){
 				header("Location: ../view/usuario/homeLocatario.html");

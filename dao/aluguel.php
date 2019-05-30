@@ -1,7 +1,7 @@
 <?php 
 	include_once(__DIR__."/../db/db_connnection.php");
 
-	function saveLocalidadeDb($localidade){
+	function saveAluguelDb($aluguel){
 		$conn = OpenCon();
 		
 		$sqlSalvar = 'insert into localidade
@@ -20,14 +20,14 @@
 		return $last_id;
 	}
 	
-	function getLocalidadeDb($idLocalidade){
+	function getAluguelProdutoDb($idProduto){
 		$conn = OpenCon();
 		$retorno = "";
-		$sqlConsulta = 'select * from localidade where id_localidade = '.$idLocalidade;
-		$localidade = $conn->query($sqlConsulta);
+		$sqlConsulta = 'select * from aluguel where id_produto = '.$idProduto;
+		$aluguel = $conn->query($sqlConsulta);
 		$retorno = array();
-		if (isset($localidade) && $localidade != null && is_object($localidade) && $localidade->num_rows > 0) {
-			while($row = mysqli_fetch_array($localidade, MYSQLI_ASSOC)) {
+		if (isset($aluguel) && $aluguel != null && is_object($aluguel) && $aluguel->num_rows > 0) {
+			while($row = mysqli_fetch_array($aluguel, MYSQLI_ASSOC)) {
 				$retorno[] = $row;
 			}
 		}

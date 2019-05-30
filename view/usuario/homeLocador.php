@@ -2,6 +2,9 @@
 <html lang="en">
 <?php
 	require_once __DIR__."/../../model/anuncio.php";
+	require_once __DIR__."/../../model/localidade.php";
+	require_once __DIR__."/../../model/carroModel.php";
+	require_once __DIR__."/../../model/aluguel.php";
 	session_start();
 	$usuario = $_SESSION["user"][0];
 ?>
@@ -58,19 +61,33 @@
 <div class="container">
   <h3>Meus Anúncios</h3>
 
-<div class="col-md-2 column productbox">
+
 <?php
 	$anuncios = getAnuncios($usuario["id_usuario"]);
 	foreach($anuncios as $anuncio){
-		var_dump($anuncio);
-	} 
-	die;
-	
+		//buscar localidade
+		$anuncio['localidade'] = getLocalidade($anuncio['local_retirada']);
+		//buscar produto
+		$anuncio['produto'] = getCarro($anuncio['id_produto']);
+		
+		$anuncio['aluguel'] = getAluguelProduto($anuncio['id_produto']);
+		
+		if($anuncio['aluguel'] != null && sizeof($anuncio['aluguel']) > 0){
+			$texto = "<p style='background: rgba(242, 38, 19, 1)'>Indisponível</p>";
+		} else {
+			$texto = "<p style='background: rgba(0, 230, 64, 1);'>Disponível</p>";
+		}
+		
+		echo '
+		<div class="col-md-2 column productbox">
+		<img src="'.$anuncio['produto'][0]['foto'].'" class="img-responsive">
+		<div class="producttitle">'.$anuncio['produto'][0]['modelo'].'</div>
+		<div class="productprice"><div class="pull-right">'.$texto.'</div><div class="pricetext">R$'.$anuncio['valor_dia'].'</div></div>
+		</div>';
+	}
 ?>
-    <img src="http://placehold.it/460x250/e67e22/ffffff&text=HTML5" class="img-responsive">
-    <div class="producttitle">Product 1</div>
-    <div class="productprice"><div class="pull-right"><a href="#" class="btn btn-danger btn-sm" role="button">BUY</a></div><div class="pricetext">£8.95</div></div>
-</div>
+    
+
 </div>
 
 </body>

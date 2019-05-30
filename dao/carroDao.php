@@ -36,5 +36,24 @@
 		CloseCon($conn);
 		return $retorno;
 	}
+	
+	function getCarroDb($idProduto){
+		$conn = OpenCon();
+		
+		$sqlConsulta = 'select * from produto where id_produto = "'.$idProduto.'" and dt_cancelamento is null';
+		
+		$carro = $conn->query($sqlConsulta);
+		
+		$retorno = array();
+		
+		if (isset($carro) && $carro != null && is_object($carro) && $carro->num_rows > 0) {
+			while($row = mysqli_fetch_array($carro, MYSQLI_ASSOC)) {
+				$retorno[] = $row;
+			}
+		}
+		
+		CloseCon($conn);
+		return $retorno;
+	}
 
 ?>

@@ -11,6 +11,6 @@
 	
 	saveAnuncio($anuncio);
 	
-	header("Location: ../view/usuario/homeLocador.html");
+	header("Location: ../view/usuario/homeLocador.php");
 	
 ?>
