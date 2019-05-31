@@ -50,14 +50,14 @@
 	function getAnunciosRangeDataDb($dataInicio, $dataFim){
 		$conn = OpenCon();
 		$retorno = "";
-		$sqlConsulta = 'select * from usuario_produto where dt_inicio_disp > "'.$dataInicio.'" and dt_fim_disp <= "'.$dataFim.'"';
+		$sqlConsulta = 'SELECT * FROM `usuario_produto` WHERE `dt_inicio_disp` between "'.$dataInicio.'" AND "'.$dataFim.'"';
 		$anuncios = $conn->query($sqlConsulta);
+		var_dump($sqlConsulta);die;
 		$retorno = array();
 		while($row = mysqli_fetch_array($anuncios, MYSQLI_ASSOC)) {
 			$retorno[] = $row;
 		}
 		CloseCon($conn);
-		
 		return $retorno;
 	}
 	

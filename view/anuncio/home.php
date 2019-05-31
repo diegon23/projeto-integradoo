@@ -35,7 +35,7 @@
       var date_input=$('input[name="dataInicio"]');
       var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
       var options={
-        format: 'dd/mm/yyyy',
+        format: 'mm/dd/yyyy',
         container: container,
         todayHighlight: true,
         autoclose: true,
@@ -46,7 +46,7 @@
 	  var date_input=$('input[name="dataFim"]');
       var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
       var options={
-        format: 'dd/mm/yyyy',
+        format: 'mm/dd/yyyy',
         container: container,
         todayHighlight: true,
         autoclose: true,

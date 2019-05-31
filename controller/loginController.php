@@ -20,7 +20,7 @@
 			}
 		}
 	} else {
-		header("Location: ../index.php?mensagem=Usuário e/ou senha incorretos!");
+		header("Location: ../login.php?mensagem=Usuário e/ou senha incorretos!");
 		die();
 	}
 	

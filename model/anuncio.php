@@ -2,8 +2,8 @@
 	require_once __DIR__."/../dao/anuncio.php";
 	
 	function saveAnuncio($anuncio){
-		$anuncio['dt_inicio_disp'] = implode('-', array_reverse(explode('/', $anuncio['dt_inicio_disp'])));
-		$anuncio['dt_fim_disp'] = implode('-', array_reverse(explode('/', $anuncio['dt_fim_disp'])));
+		$anuncio['dataInicio'] = implode('-', array_reverse(explode('/', $anuncio['dataInicio'])));
+		$anuncio['dataFim'] = implode('-', array_reverse(explode('/', $anuncio['dataFim'])));
 		saveAnuncioDb($anuncio);
 	}
 	
