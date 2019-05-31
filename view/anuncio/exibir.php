@@ -5,12 +5,10 @@
 	require_once __DIR__."/../../model/localidade.php";
 	require_once __DIR__."/../../model/carroModel.php";
 	require_once __DIR__."/../../model/aluguel.php";
-	session_start();
-	$usuario = $_SESSION["user"][0];
 ?>
 
 <head>
-  <title>Meu Carro, Seu Carro - Home</title>
+  <title>Meu Carro, Seu Carro</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -18,29 +16,29 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 <style>
-.productbox {
-    background-color:#ffffff;
-	padding:10px;
-	margin-bottom:10px;
-	-webkit-box-shadow: 0 8px 6px -6px  #999;
-	   -moz-box-shadow: 0 8px 6px -6px  #999;
-	        box-shadow: 0 8px 6px -6px #999;
-}
+	.productbox {
+			background-color:#ffffff;
+		padding:10px;
+		margin-bottom:10px;
+		-webkit-box-shadow: 0 8px 6px -6px  #999;
+			-moz-box-shadow: 0 8px 6px -6px  #999;
+						box-shadow: 0 8px 6px -6px #999;
+	}
 
-.producttitle {
-    font-weight:bold;
-	padding:5px 0 5px 0;
-}
+	.producttitle {
+			font-weight:bold;
+		padding:5px 0 5px 0;
+	}
 
-.productprice {
-	border-top:1px solid #dadada;
-	padding-top:5px;
-}
+	.productprice {
+		border-top:1px solid #dadada;
+		padding-top:5px;
+	}
 
-.pricetext {
-	font-weight:bold;
-	font-size:1.4em;
-}
+	.pricetext {
+		font-weight:bold;
+		font-size:1.4em;
+	}
 </style>
 <body>
 
@@ -55,10 +53,6 @@
       <li><a href="carros.html">Cadastrar Carros</a></li>
       <li><a href="cadastrarAnuncio.php">Cadastrar Anúncio</a></li>
     </ul>
-      
-		<ul class="nav navbar-nav pull-right">
-			<li class="active"><a href="../../index.php">Sair</a></li>
-		</ul>
   </div>
 </nav>
   
@@ -67,7 +61,7 @@
 
 
 <?php
-	$anuncios = getAnuncios($usuario["id_usuario"]);
+	$anuncios = getAnunciosRangeData($_POST["dataInicio"], $_POST["dataFim"]);
 	foreach($anuncios as $anuncio){
 		//buscar localidade
 		$anuncio['localidade'] = getLocalidade($anuncio['local_retirada']);
@@ -81,6 +75,7 @@
 		} else {
 			$texto = "<p style='background: rgba(0, 230, 64, 1);'>Disponível</p>";
 		}
+		
 		echo '
 		<div class="col-md-2 column productbox">
 		<img src="'.$anuncio['produto'][0]['foto'].'" class="img-responsive">

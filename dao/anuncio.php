@@ -46,6 +46,20 @@
 		
 		return $retorno;
 	}
+
+	function getAnunciosRangeDataDb($dataInicio, $dataFim){
+		$conn = OpenCon();
+		$retorno = "";
+		$sqlConsulta = 'select * from usuario_produto where dt_inicio_disp > "'.$dataInicio.'" and dt_fim_disp <= "'.$dataFim.'"';
+		$anuncios = $conn->query($sqlConsulta);
+		$retorno = array();
+		while($row = mysqli_fetch_array($anuncios, MYSQLI_ASSOC)) {
+			$retorno[] = $row;
+		}
+		CloseCon($conn);
+		
+		return $retorno;
+	}
 	
 	function existeUsuarioCpfEmailTipo($cpf, $email, $tipo){
 		$conn = OpenCon();

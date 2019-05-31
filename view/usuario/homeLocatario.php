@@ -1,5 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+	require_once __DIR__."/../../model/anuncio.php";
+	require_once __DIR__."/../../model/localidade.php";
+	require_once __DIR__."/../../model/carroModel.php";
+	require_once __DIR__."/../../model/aluguel.php";
+	session_start();
+	$usuario = $_SESSION["user"][0];
+?>
 <head>
   <title>Bootstrap Example</title>
   <meta charset="utf-8">

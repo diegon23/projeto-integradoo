@@ -179,6 +179,10 @@ $(function() {
 			  <li><a href="carros.html">Cadastrar Carros</a></li>
 			  <li class="active"><a href="cadastrarAnuncio.php">Cadastrar Anúncio</a></li>
 			</ul>
+      
+      <ul class="nav navbar-nav pull-right">
+        <li class="active"><a href="../../index.php">Sair</a></li>
+      </ul>
 		  </div>
 		</nav>
         <div class="container">

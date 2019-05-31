@@ -46,6 +46,19 @@
 		
 		return $retorno;
 	}
+
+	function getUserDbUserId($userId){
+		$conn = OpenCon();
+		$retorno = "";
+		$sqlConsulta = 'select * from usuario where id_usuario = "'.$userId.'"';
+		$usuario = $conn->query($sqlConsulta);
+		if (isset($usuario) && $usuario != null && is_object($usuario) && $usuario->num_rows > 0) {
+			$retorno = $usuario->fetch_assoc();
+		}
+		CloseCon($conn);
+		
+		return $retorno;
+	}
 	
 	function existeUsuarioCpfEmailTipo($cpf, $email, $tipo){
 		$conn = OpenCon();

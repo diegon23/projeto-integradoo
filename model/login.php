@@ -24,4 +24,8 @@
 
 		return $output;
 	}
+
+	function getUserUserId($userId){
+		return getUserDbUserId($userId);
+	}
 ?>
