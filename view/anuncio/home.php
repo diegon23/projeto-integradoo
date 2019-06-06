@@ -32,26 +32,26 @@
 
 <script>
     $(document).ready(function(){
-      var date_input=$('input[name="dataInicio"]');
-      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-      var options={
-        format: 'mm/dd/yyyy',
-        container: container,
-        todayHighlight: true,
-        autoclose: true,
-      };
-      date_input.datepicker(options);
 	  
-	  
-	  var date_input=$('input[name="dataFim"]');
-      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-      var options={
-        format: 'mm/dd/yyyy',
-        container: container,
-        todayHighlight: true,
+      $("#dataInicio").datepicker({
+        todayBtn:  1,
         autoclose: true,
-      };
-      date_input.datepicker(options);
+        todayHighlight: true,
+        format: 'dd/mm/yyyy',
+		startDate: new Date()
+		
+    }).on('changeDate', function (selected) {
+        var minDate = new Date(selected.date.valueOf()+(1000 * 60 * 60 * 24));
+        $('#dataFim').datepicker('setStartDate', minDate);
+    });
+
+    $("#dataFim").datepicker({
+        format: 'dd/mm/yyyy',
+        autoclose: true,
+	}).on('changeDate', function (selected) {
+            var maxDate = new Date(selected.date.valueOf() - (1000 * 60 * 60 * 24));
+            $('#dataInicio').datepicker('setEndDate', maxDate);
+        });
 	  
 	  $('.dropdown-menu li').click(function()
                    {
@@ -79,15 +79,15 @@
         <h2 style="text-align:center">Buscar Anúncio</h2>
         <div class="form-group">
           <label class="control-label" for="dataInicio">Data Início</label>
-          <input class="form-control" id="dataInicio" name="dataInicio" placeholder="DD/MM/AAAA" type="text"/>
+          <input autocomplete="off" class="form-control" id="dataInicio" name="dataInicio" placeholder="DD/MM/AAAA" type="text"/>
         </div>
         <div class="form-group">
           <label class="control-label" for="dataFim">Data Fim</label>
-          <input class="form-control" id="dataFim" name="dataFim" placeholder="DD/MM/AAAA" type="text"/>
+          <input autocomplete="off" class="form-control" id="dataFim" name="dataFim" placeholder="DD/MM/AAAA" type="text"/>
         </div>
         <div class="row">
           <div class="col-sm-12 form-group">
-            <button type="submit" class="btn btn-lg btn-success btn-block" id="btnContactUs">Cadastrar</button>
+            <button type="submit" class="btn btn-lg btn-success btn-block" id="btnContactUs">Pesquisar</button>
         </div>
       </div>
     </div>

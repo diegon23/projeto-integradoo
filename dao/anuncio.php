@@ -8,7 +8,7 @@
 		(local_retirada, local_entrega, id_usuario, id_produto, dt_cadastro, valor_dia, dt_inicio_disp, dt_fim_disp)
 		values
 		('.$anuncio["id_localidade"].','.$anuncio["id_localidade"].','.$anuncio["id_usuario"].','.$anuncio["idCarro"].', CURDATE(),'.$anuncio["preco"].',"'.$anuncio["dataInicio"].'","'.$anuncio["dataFim"].'")';
-
+		
 		if($conn->query($sqlSalvar) === TRUE){
 			
 		} else {
@@ -52,7 +52,7 @@
 		$retorno = "";
 		$sqlConsulta = 'SELECT * FROM `usuario_produto` WHERE `dt_inicio_disp` between "'.$dataInicio.'" AND "'.$dataFim.'"';
 		$anuncios = $conn->query($sqlConsulta);
-		var_dump($sqlConsulta);die;
+		
 		$retorno = array();
 		while($row = mysqli_fetch_array($anuncios, MYSQLI_ASSOC)) {
 			$retorno[] = $row;

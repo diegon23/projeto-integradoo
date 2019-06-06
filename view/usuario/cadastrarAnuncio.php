@@ -123,32 +123,32 @@ $(function() {
 	</script>
 	<script>
     $(document).ready(function(){
-      var date_input=$('input[name="dataInicio"]');
-      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-      var options={
-        format: 'dd/mm/yyyy',
-        container: container,
-        todayHighlight: true,
+      $("#dataInicio").datepicker({
+        todayBtn:  1,
         autoclose: true,
-      };
-      date_input.datepicker(options);
+        todayHighlight: true,
+        format: 'dd/mm/yyyy',
+		startDate: new Date()
+		
+    }).on('changeDate', function (selected) {
+        var minDate = new Date(selected.date.valueOf()+(1000 * 60 * 60 * 24));
+        $('#dataFim').datepicker('setStartDate', minDate);
+    });
+
+    $("#dataFim").datepicker({
+        format: 'dd/mm/yyyy',
+        autoclose: true,
+	}).on('changeDate', function (selected) {
+            var maxDate = new Date(selected.date.valueOf() - (1000 * 60 * 60 * 24));
+            $('#dataInicio').datepicker('setEndDate', maxDate);
+        });
 	  
 	  
-	  var date_input=$('input[name="dataFim"]');
-      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-      var options={
-        format: 'dd/mm/yyyy',
-        container: container,
-        todayHighlight: true,
-        autoclose: true,
-      };
-      date_input.datepicker(options);
 	  
 	  $('.dropdown-menu li').click(function()
                    {
 					   $('#idCarro').val(this.value);
                    });
-	  
     })
 	
 	function validarEndereco($endereco){
@@ -194,10 +194,10 @@ $(function() {
 							<div class="dropdown" style="text-align: -webkit-center; padding: 2%">
 								<button required class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="botaoDropdown">Escolha o carro
 								<span class="caret"></span></button>
-								<ul class="dropdown-menu dropdown-menu-center">
+								<ul id="listCarros" class="dropdown-menu dropdown-menu-center">
 								  <?php
 									foreach($carros as $carro){
-										echo '<li value="'.$carro["id_produto"].'"><a>'.$carro["modelo"]. ' - '.$carro["cor"].'</a></li>';
+										echo '<li class="'.$carro["id_produto"].'" value="'.$carro["id_produto"].'"><a>'.$carro["modelo"]. ' - '.$carro["cor"].'</a></li>';
 									}
 								  ?>
 								</ul>
@@ -219,11 +219,11 @@ $(function() {
 						
 						<div class="form-group">
 							<label class="control-label" for="dataInicio">Data Início</label>
-							<input class="form-control" id="dataInicio" name="dataInicio" placeholder="DD/MM/AAAA" type="text"/>
+							<input autocomplete="off" class="form-control" id="dataInicio" name="dataInicio" placeholder="DD/MM/AAAA" type="text"/>
 						</div>
 						<div class="form-group">
 							<label class="control-label" for="dataFim">Data Fim</label>
-							<input class="form-control" id="dataFim" name="dataFim" placeholder="DD/MM/AAAA" type="text"/>
+							<input autocomplete="off" class="form-control" id="dataFim" name="dataFim" placeholder="DD/MM/AAAA" type="text"/>
 						</div>
 						
                         <div class="row">

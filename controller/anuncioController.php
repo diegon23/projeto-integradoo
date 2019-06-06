@@ -4,8 +4,8 @@
 	$anuncio = $_POST;
 	
 	session_start();
-	$anuncio["id_usuario"] = $_SESSION["user"][0]["id_usuario"];
 	
+	$anuncio["id_usuario"] = $_SESSION["user"][0]["id_usuario"];
 	
 	$anuncio["id_localidade"] = saveLocalidade($anuncio["local"]);
 	
