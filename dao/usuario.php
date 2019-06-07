@@ -1,5 +1,5 @@
 <?php 
-	include_once("../db/db_connnection.php");
+	require_once __DIR__."/../db/db_connnection.php";
 
 	function saveUserDb($user){
 		$conn = OpenCon();
@@ -18,6 +18,22 @@
 		CloseCon($conn);
 	}
 	
+	function getUserIdDb($idUsuario){
+		$conn = OpenCon();
+		$retorno = "";
+		$sqlConsulta = 'select * from usuario where id_usuario = '.$idUsuario;
+		$usuario = $conn->query($sqlConsulta);
+		$retorno = array();
+		if (isset($usuario) && $usuario != null && is_object($usuario) && $usuario->num_rows > 0) {
+			while($row = mysqli_fetch_array($usuario, MYSQLI_ASSOC)) {
+				$retorno[] = $row;
+			}
+		}
+		
+		CloseCon($conn);
+		return $retorno;
+	}
+
 	function getUserDb($login, $senha){
 		$conn = OpenCon();
 		$retorno = "";

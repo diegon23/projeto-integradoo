@@ -49,58 +49,18 @@
 		CloseCon($conn);
 		return $retorno;
 	}
-	
-	function getUserDbEmail($email){
-		$conn = OpenCon();
-		$retorno = "";
-		$sqlConsulta = 'select * from usuario where email = "'.$email.'"';
-		$usuario = $conn->query($sqlConsulta);
-		if (isset($usuario) && $usuario != null && is_object($usuario) && $usuario->num_rows > 0) {
-			$retorno = $usuario->fetch_assoc();
-		}
-		CloseCon($conn);
-		
-		return $retorno;
-	}
 
 	function getAnunciosRangeDataDb($dataInicio, $dataFim){
 		$conn = OpenCon();
 		$retorno = "";
 		$sqlConsulta = 'SELECT * FROM `usuario_produto` WHERE `dt_inicio_disp` between "'.$dataInicio.'" AND "'.$dataFim.'"';
 		$anuncios = $conn->query($sqlConsulta);
-		
 		$retorno = array();
 		while($row = mysqli_fetch_array($anuncios, MYSQLI_ASSOC)) {
 			$retorno[] = $row;
 		}
 		CloseCon($conn);
 		return $retorno;
-	}
-	
-	function existeUsuarioCpfEmailTipo($cpf, $email, $tipo){
-		$conn = OpenCon();
-		$retorno = "";
-		$sqlConsulta = 'select * from usuario where (cpf = "'.$cpf. '" or email = "'. $email.'") and id_tipo = '.$tipo; 
-		$usuario = $conn->query($sqlConsulta);
-		if (isset($usuario) && $usuario != null && is_object($usuario) && $usuario->num_rows > 0) {
-			return true;
-		}
-		CloseCon($conn);
-		
-		return false;
-	}
-	
-	function existeUsuarioEmail($email){
-		$conn = OpenCon();
-		$retorno = "";
-		$sqlConsulta = 'select * from usuario where email = '.$email;
-		$usuario = $conn->query($sqlConsulta);
-		if (isset($usuario) && $usuario != null && is_object($usuario) && $usuario->num_rows > 0) {
-			return true;
-		}
-		CloseCon($conn);
-		
-		return false;
 	}
 
 ?>

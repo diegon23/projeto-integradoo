@@ -1,5 +1,5 @@
 <?php 
-	include_once("../dao/usuario.php");
+	require_once __DIR__."/../dao/usuario.php";
 	
 	function saveUser($user){
 		$user['nome'] = $user['primeiro_nome'].' '.$user['ultimo_nome'];
@@ -34,7 +34,9 @@
 		return $mail = mail($email, 'Esqueci Minha Senha', $message, $headers);
 	}
 	
-	
+	function getUserId($idUsuario){
+		return getUserIdDb($idUsuario);
+	}
 	
 	function encrypt( $string) {
 		$output = false;
