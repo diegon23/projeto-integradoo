@@ -9,8 +9,8 @@
 		return getCarrosUsuarioDb($usuario);
 	}
 	
-	function getCarro($usuario){
-		return getCarroDb($usuario);
+	function getCarro($idProduto){
+		return getCarroDb($idProduto);
 	}
 	
 ?>

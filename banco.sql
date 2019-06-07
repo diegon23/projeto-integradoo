@@ -129,12 +129,11 @@ CREATE TABLE IF NOT EXISTS `avaliacao` (
 CREATE TABLE IF NOT EXISTS `aluguel` (
   `id_aluguel` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `id_usuario_dono` INT NULL,
-  `id_usuario_locador` INT NULL,
-  `id_status` INT NULL,
+  `id_usuario_locatario` INT NULL,
   `dt_inicio` DATE NULL,
   `dt_fim` DATE NULL,
   `id_produto` INT NULL,
-  `status` INT NULL,
+  `status` varchar(20) NULL,
   PRIMARY KEY (`id_aluguel`))
 ;
 

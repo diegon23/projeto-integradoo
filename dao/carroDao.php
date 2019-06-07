@@ -5,9 +5,9 @@
 		$conn = OpenCon();
 		
 		$sqlSalvar = 'insert into produto
-		(modelo, ano, dt_cadastramento, cor,  foto, id_usuario)
+		(modelo, ano, dt_cadastramento, cor,  foto, id_usuario, produtocol)
 		values
-		("'.$carro['modelo'].'", "'.$carro['ano'].'",  CURDATE(), "'.$carro['cor'].'", "'.$carro['foto'].'", "'.$carro['id_usuario'].'")';
+		("'.$carro['modelo'].'", "'.$carro['ano'].'",  CURDATE(), "'.$carro['cor'].'", "'.$carro['foto'].'", "'.$carro['id_usuario'].'", "'.$carro['descricao'].'")';
 		
 		if($conn->query($sqlSalvar) === TRUE){
 			

@@ -34,6 +34,22 @@
 		return $retorno;
 	}
 	
+	function getAnuncioDb($idAnuncio){
+		$conn = OpenCon();
+		$retorno = "";
+		$sqlConsulta = 'select * from usuario_produto where id_usuario_produto = '.$idAnuncio;
+		$anuncio = $conn->query($sqlConsulta);
+		$retorno = array();
+		if (isset($anuncio) && $anuncio != null && is_object($anuncio) && $anuncio->num_rows > 0) {
+			while($row = mysqli_fetch_array($anuncio, MYSQLI_ASSOC)) {
+				$retorno[] = $row;
+			}
+		}
+		
+		CloseCon($conn);
+		return $retorno;
+	}
+	
 	function getUserDbEmail($email){
 		$conn = OpenCon();
 		$retorno = "";

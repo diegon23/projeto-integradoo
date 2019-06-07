@@ -51,7 +51,6 @@
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="#">Meus anúncios</a></li>
-      <li><a href="#">Perfil</a></li>
       <li><a href="carros.html">Cadastrar Carros</a></li>
       <li><a href="cadastrarAnuncio.php">Cadastrar Anúncio</a></li>
     </ul>

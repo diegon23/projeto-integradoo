@@ -9,4 +9,8 @@
 	function getAluguelProduto($idProduto){
 		return getAluguelProdutoDb($idProduto);
 	}
+	
+	function getAluguelLocatario($idLocatario){
+		return getAluguelLocatarioDb($idLocatario);
+	}
 ?>

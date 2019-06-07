@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+  <?php session_start();?>
 <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,8 +26,11 @@
       margin-left:5px;
       width:100%;
     }
-    .datepicker{
-      top: 0px;
+ 
+    .datepicker { 
+      margin-left: 100px;
+      z-index: 1000;
+      top: 0px !important;
     }
 </style>
 
@@ -34,7 +38,6 @@
     $(document).ready(function(){
 	  
       $("#dataInicio").datepicker({
-        todayBtn:  1,
         autoclose: true,
         todayHighlight: true,
         format: 'dd/mm/yyyy',
@@ -53,10 +56,6 @@
             $('#dataInicio').datepicker('setEndDate', maxDate);
         });
 	  
-	  $('.dropdown-menu li').click(function()
-                   {
-					   $('#idCarro').val(this.value);
-                   });
 	  
     });
 </script>
@@ -67,9 +66,28 @@
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Meu carro, Seu carro</a>
       
-      <ul class="nav navbar-nav pull-right">
-        <li class="active"><a href="../../login.php">Login</a></li>
+        <?php 
+                        if(isset($_SESSION['user'])) {
+                            echo '                 
+			<ul class="nav navbar-nav">
+      <li><a href="home.php">Procurar anúncios</a></li>
+      <li><a href="meusAnuncios.php">Meus Anuncios</a></li>
       </ul>
+      <ul class="nav navbar-nav pull-right">
+        <li class="active"><a href="../../index.php">Sair</a></li>
+      </ul>
+                            ';
+      
+                        } else {
+                          echo '
+                          
+      <ul class="nav navbar-nav pull-right">
+      <li class="active"><a href="../../login.php">Login</a></li>
+    </ul>
+                          ';
+                        }
+                        
+                        ?>
     </div>
   </nav>
     

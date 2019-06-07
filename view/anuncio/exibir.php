@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
+	session_start();
 	require_once __DIR__."/../../model/anuncio.php";
 	require_once __DIR__."/../../model/localidade.php";
 	require_once __DIR__."/../../model/carroModel.php";
@@ -16,6 +17,11 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 <style>
+.navbar-header{
+      margin-left:5px;
+      width:100%;
+    }
+
 	.productbox {
 			background-color:#ffffff;
 		padding:10px;
@@ -40,48 +46,74 @@
 		font-size:1.4em;
 	}
 </style>
+<script>
+	function exibeAnuncio($id){
+		window.location.href = "exibirAnuncio.php?idAnuncio="+$id.id;
+	}
+</script>
 <body>
 
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Meu Carro, Seu Carro</a>
+      <a class="navbar-brand" href="home.php">Meu Carro, Seu Carro</a>
+      
+			<?php 
+                        if(isset($_SESSION['user'])) {
+                            echo '
+                            
+			<ul class="nav navbar-nav">
+            <li><a href="home.php">Procurar anúncios</a></li>
+            <li><a href="meusAnuncios.php">Meus Anuncios</a></li>
+            </ul>
+            <ul class="nav navbar-nav pull-right">
+                <li class="active"><a href="../../index.php">Sair</a></li>
+            </ul>
+                            ';
+                        }
+ else { echo '
+  <ul class="nav navbar-nav pull-right">
+  <li class="active"><a href="../../login.php">Login</a></li>
+</ul>';
+ }                        
+                        ?>
     </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Meus anúncios</a></li>
-      <li><a href="#">Perfil</a></li>
-      <li><a href="carros.html">Cadastrar Carros</a></li>
-      <li><a href="cadastrarAnuncio.php">Cadastrar Anúncio</a></li>
-    </ul>
   </div>
 </nav>
   
 <div class="container">
-  <h3>Meus Anúncios</h3>
-
-
+  <h2>Anúncios disponíveis</h2>
 <?php
 	$anuncios = getAnunciosRangeData($_POST["dataInicio"], $_POST["dataFim"]);
-	foreach($anuncios as $anuncio){
-		//buscar localidade
-		$anuncio['localidade'] = getLocalidade($anuncio['local_retirada']);
-		//buscar produto
-		$anuncio['produto'] = getCarro($anuncio['id_produto']);
-		
-		$anuncio['aluguel'] = getAluguelProduto($anuncio['id_produto']);
-		
-		if($anuncio['aluguel'] != null && sizeof($anuncio['aluguel']) > 0){
-			$texto = "<p style='background: rgba(242, 38, 19, 1)'>Indisponível</p>";
-		} else {
-			$texto = "<p style='background: rgba(0, 230, 64, 1);'>Disponível</p>";
+	if(!empty($anuncios)){
+		foreach($anuncios as $anuncio){
+			//buscar localidade
+			$anuncio['localidade'] = getLocalidade($anuncio['local_retirada']);
+			//buscar produto
+			$anuncio['produto'] = getCarro($anuncio['id_produto']);
+			
+			$anuncio['aluguel'] = getAluguelProduto($anuncio['id_produto']);
+			
+			if($anuncio['aluguel'] != null && sizeof($anuncio['aluguel']) > 0){
+				$texto = "<p style='background: rgba(242, 38, 19, 1)'>Indisponível</p>";
+			} else {
+				$texto = "<p style='background: rgba(0, 230, 64, 1);'>Disponível</p>";
+			}
+			
+			echo '
+			<div class="col-md-2 column productbox">
+				<img src="'.$anuncio['produto'][0]['foto'].'" class="img-responsive">
+				<div class="producttitle">'.$anuncio['produto'][0]['modelo'].'</div>';
+				if($anuncio['aluguel'] != null && sizeof($anuncio['aluguel']) > 0){
+					echo '<div class="productprice"><div class="pull-right">'.$texto.'</div>';
+				} else {
+					echo '<div class="productprice"><div id = "'.$anuncio['id_usuario_produto'].'" class="pull-right" onclick="exibeAnuncio(this)">Abrir</div>';
+				}
+				echo '<div class="pricetext">R$'.$anuncio['valor_dia'].'</div></div>
+			</div>';
 		}
-		
-		echo '
-		<div class="col-md-2 column productbox">
-		<img src="'.$anuncio['produto'][0]['foto'].'" class="img-responsive">
-		<div class="producttitle">'.$anuncio['produto'][0]['modelo'].'</div>
-		<div class="productprice"><div class="pull-right">'.$texto.'</div><div class="pricetext">R$'.$anuncio['valor_dia'].'</div></div>
-		</div>';
+	} else {
+			echo '<h3 style="color:red">Nenhum anúncio disponível no período selecionado</h3></br><a href = "home.php">Pesquisar novamente</a>';
 	}
 ?>
     

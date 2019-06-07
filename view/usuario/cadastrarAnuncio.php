@@ -175,7 +175,6 @@ $(function() {
 			</div>
 			<ul class="nav navbar-nav">
 			  <li><a href="homeLocador.php">Meus anúncios</a></li>
-			  <li><a href="#">Perfil</a></li>
 			  <li><a href="carros.html">Cadastrar Carros</a></li>
 			  <li class="active"><a href="cadastrarAnuncio.php">Cadastrar Anúncio</a></li>
 			</ul>

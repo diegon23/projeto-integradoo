@@ -9,6 +9,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
 <style type="text/css">
+    .navbar-header{
+      margin-left:5px;
+      width:100%;
+    }
 	.login-form {
 		width: 340px;
     	margin: 50px auto;
@@ -38,10 +42,10 @@
     <form action="controller/loginController.php" method="POST">
         <h2 class="text-center">Entrar</h2>       
         <div class="form-group">
-            <input type="text" class="form-control" name = "login" required="required">
+            <input type="text" class="form-control" name = "login" placeholder="Seu CPF..." required="required">
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" name = "senha" required="required">
+            <input type="password" class="form-control" name = "senha" required="required" placeholder="Sua Senha...">
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-primary btn-block">Entrar</button>
@@ -52,6 +56,7 @@
         </div>        
     </form>
     <p class="text-center"><a href="view/cadastro/cadastro.html">Cadastrar-se</a></p>
+    <h3 class="text-center"><a href="index.php">Visualizar Anúncios</a></h3>
 	<?php if(isset($_GET['mensagem'])){ 
 		echo '<p style= "color: red" class="text-center">'.$_GET['mensagem'].'</p>';
 	}?>
