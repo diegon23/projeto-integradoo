@@ -1,38 +1,40 @@
 <?php 
-	include_once(__DIR__."/../db/db_connnection.php");
+	include_once(__DIR__."/../db/database_functions.php");
 
 	function saveLocalidadeDb($localidade){
-		$conn = OpenCon();
+		$databasename = "projetointegrado";
+		$conn = connect_to_database($databasename);
 		
 		$sqlSalvar = 'insert into localidade
 		(cidade, endereco, numero)
 		values
 		("'.$localidade[0].'","'.$localidade[1].'","'.$localidade[2].'")';
-		
-		if($conn->query($sqlSalvar) === TRUE){
-			$last_id = $conn->insert_id;
+
+		$last_id = 0;
+		$conn->query($sqlSalvar);
+		if($conn->errorInfo()[0] === "00000"){
+			$last_id = $conn->lastInsertId();
 		} else {
-			echo $conn->error;
+			echo $conn->errorInfo()[2];
 		}
 		
-		CloseCon($conn);
+		close_connection($conn);
 		
 		return $last_id;
 	}
 	
 	function getLocalidadeDb($idLocalidade){
-		$conn = OpenCon();
+		$databasename = "projetointegrado";
+		$conn = connect_to_database($databasename);
 		$retorno = "";
 		$sqlConsulta = 'select * from localidade where id_localidade = '.$idLocalidade;
 		$localidade = $conn->query($sqlConsulta);
 		$retorno = array();
-		if (isset($localidade) && $localidade != null && is_object($localidade) && $localidade->num_rows > 0) {
-			while($row = mysqli_fetch_array($localidade, MYSQLI_ASSOC)) {
+		while ($row = $localidade->fetch()) {
 				$retorno[] = $row;
-			}
 		}
 		
-		CloseCon($conn);
+		close_connection($conn);
 		return $retorno;
 	}
 	

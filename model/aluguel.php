@@ -13,4 +13,8 @@
 	function getAluguelLocatario($idLocatario){
 		return getAluguelLocatarioDb($idLocatario);
 	}
+	
+	function deleteAluguel($idAluguel){
+		return deleteAluguelDb($idAluguel);
+	}
 ?>

@@ -5,7 +5,6 @@
 	$aluguel = $_POST;
 	
 	session_start();
-	
 	$aluguel["id_usuario_locatario"] = $_SESSION["user"][0]["id_usuario"];
 	
 	$aluguel["produto"] = getCarro($aluguel["idProduto"]);

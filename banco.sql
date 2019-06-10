@@ -1,7 +1,5 @@
-SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
-SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
-
+create database projetointegrado;
+use projetointegrado;
 -- -----------------------------------------------------
 -- Table `produto`
 -- -----------------------------------------------------
@@ -42,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `dt_cadastro` DATE NULL,
   `dt_cancelamento` DATE NULL,
   `cpf` VARCHAR(11) NULL,
-  `telefone` INT(12) NULL,
+  `telefone` VARCHAR(20) NULL,
   `senha` VARCHAR(200) NULL,
   `id_conta_corrente` INT NULL,
   `id_dados_pagamento` INT NULL,
@@ -136,8 +134,3 @@ CREATE TABLE IF NOT EXISTS `aluguel` (
   `status` varchar(20) NULL,
   PRIMARY KEY (`id_aluguel`))
 ;
-
-
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

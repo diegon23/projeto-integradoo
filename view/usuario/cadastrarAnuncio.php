@@ -142,15 +142,15 @@ $(function() {
             var maxDate = new Date(selected.date.valueOf() - (1000 * 60 * 60 * 24));
             $('#dataInicio').datepicker('setEndDate', maxDate);
         });
-	  
-	  
-	  
-	  $('.dropdown-menu li').click(function()
-                   {
-					   $('#idCarro').val(this.value);
-                   });
-    })
+	  });
 	
+  function mudarNome($a){
+    $('#idCarro').val($a.value);
+    
+    document.getElementById('textBotao').textContent = $a.textContent;      
+  };
+    
+
 	function validarEndereco($endereco){
 		var $enderecoCompleto = $endereco.value.split(',');
 		if($enderecoCompleto.length != 3){
@@ -191,12 +191,12 @@ $(function() {
                         <input type="hidden" name="idCarro" id="idCarro">
                         <div class="row">
 							<div class="dropdown" style="text-align: -webkit-center; padding: 2%">
-								<button required class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="botaoDropdown">Escolha o carro
+								<button required class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="botaoDropdown" ><p id="textBotao">Escolha o carro</p>
 								<span class="caret"></span></button>
 								<ul id="listCarros" class="dropdown-menu dropdown-menu-center">
 								  <?php
 									foreach($carros as $carro){
-										echo '<li class="'.$carro["id_produto"].'" value="'.$carro["id_produto"].'"><a>'.$carro["modelo"]. ' - '.$carro["cor"].'</a></li>';
+										echo '<li onclick="mudarNome(this)" class="'.$carro["id_produto"].'" value="'.$carro["id_produto"].'"><a>'.$carro["modelo"]. ' - '.$carro["cor"].'</a></li>';
 									}
 								  ?>
 								</ul>

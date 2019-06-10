@@ -147,7 +147,7 @@ uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url(
             <div class="row">
                 <div class="col-md-6 col-md-offset-3">
                     <h2>Detalhes do Anúncio</h2> 
-                    <form role="form" method="POST" action="cadastrarAnuncio.php">
+                    <form role="form" method="POST" action="dadosPagamento.php">
                         <div class="row">
                             <div class="col-sm-12 form-group">
                                 <label for="modelo"> Modelo do carro:</label>
