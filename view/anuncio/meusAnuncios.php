@@ -11,27 +11,32 @@
     require_once __DIR__."/../../model/cadastro.php";
     
 ?>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Meu Carro, Seu Carro - Cadastrar Carros</title>
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
-        <link rel="stylesheet" href="form.css" >
-        <script src="form.js"></script>
-		  <meta charset="utf-8">
-		  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-		  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-		  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    </head>
-    <script>
-      function cancelar($id){
-        window.location.href = "../../controller/anuncioController.php?idAluguel="+$id.id;
-      };
-      </script>
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Meu Carro, Seu Carro - Cadastrar Carros</title>
+      <!-- Latest compiled and minified CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+      <!-- Optional theme -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
+      <link rel="stylesheet" href="form.css" >
+      <script src="form.js"></script>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  </head>
+
+  <script>
+    function cancelar($id){
+      window.location.href = "../../controller/anuncioController.php?idAluguel="+$id.id;
+    };
+
+    function downloadPdf(){
+      window.location.href = "downloadPdf.php";
+    };
+  </script>
 	<style>
 	
 
@@ -147,6 +152,8 @@ body
       </div>
       <div class="producttitle">'.$aluguel['status'].' <div class="producttitle pull-right">'.$usuarioLocador[0]['telefone'].'</div>
       </div> 
+      
+      <div onclick="downloadPdf()" style="background: rgba(50, 200, 150, 1); color: white" class="producttitle">Baixar Contrato</div>
       <div id="'.$aluguel['id_aluguel'].'" onclick="cancelar(this)" style="background: rgba(242, 38, 19, 1); color: white" class="producttitle">CANCELAR</div>
       
 		</div>';
