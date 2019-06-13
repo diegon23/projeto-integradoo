@@ -1,25 +1,26 @@
 <?php 
-	include_once(__DIR__."/../db/db_connnection.php");
+	include_once(__DIR__."/../db/database_functions.php");
 
 	function saveCarroDb($carro){
-		$conn = OpenCon();
+		$databasename = "projetointegrado";
+		$conn = connect_to_database($databasename);
 		
 		$sqlSalvar = 'insert into produto
 		(modelo, ano, dt_cadastramento, cor,  foto, id_usuario, produtocol)
 		values
 		("'.$carro['modelo'].'", "'.$carro['ano'].'",  CURDATE(), "'.$carro['cor'].'", "'.$carro['foto'].'", "'.$carro['id_usuario'].'", "'.$carro['descricao'].'")';
-		
-		if($conn->query($sqlSalvar) === TRUE){
-			
+		$conn->query($sqlSalvar);
+		if($conn->errorInfo()[0] === "00000"){
 		} else {
-			echo $conn->error;
+			echo $conn->errorInfo()[2];
 		}
 		
-		CloseCon($conn);
+		close_connection($conn);
 	}
 	
 	function getCarrosUsuarioDb($idUsuario){
-		$conn = OpenCon();
+		$databasename = "projetointegrado";
+		$conn = connect_to_database($databasename);
 		
 		$sqlConsulta = 'select * from produto where id_usuario = "'.$idUsuario.'" and dt_cancelamento is null';
 		
@@ -27,18 +28,17 @@
 		
 		$retorno = array();
 		
-		if (isset($carros) && $carros != null && is_object($carros) && $carros->num_rows > 0) {
-			while($row = mysqli_fetch_array($carros, MYSQLI_ASSOC)) {
+		while ($row = $carros->fetch()) {
 				$retorno[] = $row;
-			}
 		}
 		
-		CloseCon($conn);
+		close_connection($conn);
 		return $retorno;
 	}
 	
 	function getCarroDb($idProduto){
-		$conn = OpenCon();
+		$databasename = "projetointegrado";
+		$conn = connect_to_database($databasename);
 		
 		$sqlConsulta = 'select * from produto where id_produto = "'.$idProduto.'" and dt_cancelamento is null';
 		
@@ -46,13 +46,11 @@
 		
 		$retorno = array();
 		
-		if (isset($carro) && $carro != null && is_object($carro) && $carro->num_rows > 0) {
-			while($row = mysqli_fetch_array($carro, MYSQLI_ASSOC)) {
+		while ($row = $carro->fetch()) {
 				$retorno[] = $row;
-			}
 		}
 		
-		CloseCon($conn);
+		close_connection($conn);
 		return $retorno;
 	}
 

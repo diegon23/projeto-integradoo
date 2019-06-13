@@ -5,6 +5,7 @@
 	require_once __DIR__."/../../model/localidade.php";
 	require_once __DIR__."/../../model/carroModel.php";
 	require_once __DIR__."/../../model/aluguel.php";
+	require_once __DIR__."/../../model/cadastro.php";
 	session_start();
 	$usuario = $_SESSION["user"][0];
 ?>
@@ -76,15 +77,19 @@
 		$anuncio['aluguel'] = getAluguelProduto($anuncio['id_produto']);
 		
 		if($anuncio['aluguel'] != null && sizeof($anuncio['aluguel']) > 0){
-			$texto = "<p style='background: rgba(242, 38, 19, 1)'>Indisponível</p>";
+			$anuncio['usuarioLocatario'] = getUserId($anuncio['aluguel'][0]['id_usuario_locatario']);
+
+			$texto = '<p style="background: rgba(242, 38, 19, 1)">Indisponível</p></div>
+			<div class="producttitle">'.$anuncio['usuarioLocatario'][0]['telefone'].'</div>
+			';
 		} else {
-			$texto = "<p style='background: rgba(0, 230, 64, 1);'>Disponível</p>";
+			$texto = "<p style='background: rgba(0, 230, 64, 1);'>Disponível</p></div>";
 		}
 		echo '
 		<div class="col-md-2 column productbox">
 		<img src="'.$anuncio['produto'][0]['foto'].'" class="img-responsive">
 		<div class="producttitle">'.$anuncio['produto'][0]['modelo'].'</div>
-		<div class="productprice"><div class="pull-right">'.$texto.'</div><div class="pricetext">R$'.$anuncio['valor_dia'].'</div></div>
+		<div class="productprice"><div class="pull-right">'.$texto.'<div class="pricetext">R$'.$anuncio['valor_dia'].'</div></div>
 		</div>';
 	}
 ?>

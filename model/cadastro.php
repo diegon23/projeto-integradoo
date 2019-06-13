@@ -3,7 +3,7 @@
 	
 	function saveUser($user){
 		$user['nome'] = $user['primeiro_nome'].' '.$user['ultimo_nome'];
-		$user['telefone'] = $user['ddd'].' '.$user['telefone'];
+		$user['telefone'] = $user['ddd'].$user['telefone'];
 		$user['senha'] = encrypt($user['senha']);
 		saveUserDb($user);
 	}

@@ -1,56 +1,69 @@
 <?php 
-	include_once(__DIR__."/../db/db_connnection.php");
+	include_once(__DIR__."/../db/database_functions.php");
 
 	function saveAluguelDb($aluguel){
-		$conn = OpenCon();
+		$databasename = "projetointegrado";
+		$conn = connect_to_database($databasename);
 		
 		$sqlSalvar = 'insert into aluguel
 		(id_usuario_dono, id_usuario_locatario, dt_inicio, id_produto, status)
 		values
 		('.$aluguel['id_usuario_locador'].','.$aluguel['id_usuario_locatario'].', CURDATE(), '.$aluguel['produto'][0]['id_produto'].', "ATIVO")';
 		
-		if($conn->query($sqlSalvar) === TRUE){
-			$last_id = $conn->insert_id;
+		$last_id = 0;
+		$conn->query($sqlSalvar);
+		if($conn->errorInfo()[0] == "00000"){
+			$last_id = $conn->lastInsertId();
 		} else {
-			echo $conn->error;
+			echo $conn->errorInfo()[2];
 		}
 		
-		CloseCon($conn);
+		close_connection($conn);
 		
 		return $last_id;
 	}
 	
 	function getAluguelProdutoDb($idProduto){
-		$conn = OpenCon();
+		$databasename = "projetointegrado";
+		$conn = connect_to_database($databasename);
 		$retorno = "";
 		$sqlConsulta = 'select * from aluguel where status = "ATIVO" and id_produto = '.$idProduto;
 		$aluguel = $conn->query($sqlConsulta);
 		$retorno = array();
-		if (isset($aluguel) && $aluguel != null && is_object($aluguel) && $aluguel->num_rows > 0) {
-			while($row = mysqli_fetch_array($aluguel, MYSQLI_ASSOC)) {
+		while ($row = $aluguel->fetch()) {
 				$retorno[] = $row;
-			}
 		}
 		
-		CloseCon($conn);
+		close_connection($conn);
 		return $retorno;
 	}
 	
-	
 	function getAluguelLocatarioDb($idLocatario){
-		$conn = OpenCon();
+		$databasename = "projetointegrado";
+		$conn = connect_to_database($databasename);
 		$retorno = "";
 		$sqlConsulta = 'select * from aluguel where status = "ATIVO" and id_usuario_locatario = '.$idLocatario;
 		$aluguel = $conn->query($sqlConsulta);
 		$retorno = array();
-		if (isset($aluguel) && $aluguel != null && is_object($aluguel) && $aluguel->num_rows > 0) {
-			while($row = mysqli_fetch_array($aluguel, MYSQLI_ASSOC)) {
+		while ($row = $aluguel->fetch()) {
 				$retorno[] = $row;
-			}
 		}
 		
-		CloseCon($conn);
+		close_connection($conn);
 		return $retorno;
+	}
+	
+	function deleteAluguelDb($idAluguel){
+		$databasename = "projetointegrado";
+		$conn = connect_to_database($databasename);
+		try {
+			$stmt = $conn->prepare('DELETE FROM aluguel WHERE id_aluguel = :id');
+			$stmt->bindParam(':id', $idAluguel); 
+			$stmt->execute(); 
+		  } catch(PDOException $e) {
+			echo 'Error: ' . $e->getMessage(); die;
+		  }
+
 	}
 	
 	
