@@ -8,6 +8,8 @@
 	require_once __DIR__."/../../model/carroModel.php";
     require_once __DIR__."/../../model/aluguel.php";
     $anuncio = getAnuncio($_GET['idAnuncio']);
+	$anuncio[0]['dt_inicio_disp'] = implode('/', array_reverse(explode('-', $anuncio[0]['dt_inicio_disp'])));
+	$anuncio[0]['dt_fim_disp'] = implode('/', array_reverse(explode('-', $anuncio[0]['dt_fim_disp'])));
     $anuncio['localidade'] = getLocalidade($anuncio[0]['local_retirada']);
     //buscar produto
     $anuncio['produto'] = getCarro($anuncio[0]['id_produto']);
@@ -125,7 +127,6 @@ uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url(
             <?php 
                         if(isset($_SESSION['user'])) {
                             echo '
-                            
 			<ul class="nav navbar-nav">
             <li><a href="home.php">Procurar anúncios</a></li>
             <li><a href="meusAnuncios.php">Meus Anuncios</a></li>
@@ -159,7 +160,7 @@ uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url(
 						  <div class="row">
 							<div class="col-sm-3 imgUp">
 								<div class="imagePreview"><img class="imagePreview" src="<?php echo $anuncio['produto'][0]['foto'];?>"></div>
-                <input type="hidden" id="idProduto" name="idProduto" value="<?php echo $anuncio['produto'][0]['id_produto'];?>">
+								<input type="hidden" id="idProduto" name="idProduto" value="<?php echo $anuncio['produto'][0]['id_produto'];?>">
                            
 							</div>
 							  <i class="fa fa-plus imgAdd"></i>
@@ -174,6 +175,16 @@ uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url(
                                 <input  type="hidden" class="form-control" id="ano" name="ano" maxlength="50" value="<?php echo $anuncio['produto'][0]['ano'];?>">
                             </div>
                             <div class="col-sm-5 form-group">
+                                <label for="ano"> Período:</label>
+                                <input disabled type="text" class="form-control" id="periodo" name="periodo" maxlength="50" value="<?php echo $anuncio[0]['dt_inicio_disp'].' - '.$anuncio[0]['dt_fim_disp'];?>">
+                                <input  type="hidden" class="form-control" id="periodo" name="periodo" maxlength="50" value="<?php echo $anuncio['dt_inicio_disp'].' - '.$anuncio['dt_fim_disp'];?>">
+                            </div>
+                            <div class="col-sm-5 form-group">
+                                <label for="ano"> Local de Retirada:</label>
+                                <input disabled type="text" class="form-control" id="local" name="local" maxlength="50" value="<?php echo $anuncio['localidade'][0]['endereco'] .','.$anuncio['localidade'][0]['numero'].', '.$anuncio['localidade'][0]['cidade'];?>">
+                                <input  type="hidden" class="form-control" id="local" name="local" maxlength="50" value="<?php echo $anuncio['localidade'][0]['cidade'];?>">
+                            </div>
+                            <div class="col-sm-8 form-group">
                                 <label for="name"> Descrição:</label>
                                 <textarea disabled class="form-control" type="textarea" id="descricao" name="descricao"  maxlength="6000" rows="2"><?php echo $anuncio['produto'][0]['produtocol'];?></textarea>
                                 <input  class="form-control" type="hidden" id="descricao" name="descricao"  value = "<?php echo $anuncio['produto'][0]['produtocol'];?>">

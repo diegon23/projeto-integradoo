@@ -71,7 +71,7 @@
                             echo '                 
 			<ul class="nav navbar-nav">
       <li><a href="home.php">Procurar anúncios</a></li>
-      <li><a href="meusAnuncios.php">Meus Anuncios</a></li>
+      <li><a href="meusAnuncios.php">Minhas Reservas</a></li>
       </ul>
       <ul class="nav navbar-nav pull-right">
         <li class="active"><a href="../../index.php">Sair</a></li>
