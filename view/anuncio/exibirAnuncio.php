@@ -122,7 +122,6 @@ uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url(
     });
 });
 	
-<<<<<<< HEAD
 	</script>
     <body >
 		<nav class="navbar navbar-inverse">
@@ -155,7 +154,7 @@ uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url(
             <div class="row">
                 <div class="col-md-6 col-md-offset-3">
                     <h2>Detalhes do Anúncio</h2> 
-                    <form role="form" method="POST" action="cadastrarAnuncio.php">
+                    <form role="form" method="POST" action="dadosPagamento.php">
                         <div class="row">
                             <div class="col-sm-12 form-group">
                                 <label for="modelo"> Modelo do carro:</label>
@@ -199,87 +198,6 @@ uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url(
 						</div>
                         </div>
                         <?php 
-                        if(isset($_SESSION['user'])) {
-                            echo '
-                            <div class="row">
-                                <div class="col-sm-12 form-group">
-                                    <button type="submit" class="btn btn-lg btn-success btn-block" id="btnContactUs">Reservar</button>
-                                </div>
-                            </div>';
-                        }
-                        
-                        ?>
-                    </form>
-                </div>
-=======
-</script>
-  <body>
-  <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="home.php">Meu carro, Seu carro</a>
-    </div>
-    
-          <?php 
-                      if(isset($_SESSION['user'])) {
-                          echo '
-                          
-    <ul class="nav navbar-nav">
-          <li><a href="home.php">Procurar anúncios</a></li>
-          <li><a href="meusAnuncios.php">Meus Anuncios</a></li>
-          </ul>
-          <ul class="nav navbar-nav pull-right">
-              <li class="active"><a href="../../index.php">Sair</a></li>
-          </ul>
-                          ';
-                      }
-    else { echo '
-    <ul class="nav navbar-nav pull-right">
-    <li class="active"><a href="../../login.php">Login</a></li>
-    </ul>';
-    }                        
-                      ?>
-    </div>
-  </nav>
-      <div class="container">
-          <div class="row">
-              <div class="col-md-6 col-md-offset-3">
-                  <h2>Detalhes do Anúncio</h2> 
-                  <form role="form" method="POST" action="dadosPagamento.php">
-                      <div class="row">
-                          <div class="col-sm-12 form-group">
-                              <label for="modelo"> Modelo do carro:</label>
-                              <input disabled type="text" class="form-control" id="modelo" name="modelo" maxlength="50" value="<?php echo $anuncio['produto'][0]['modelo'];?>">
-                              <input type="hidden" class="form-control" id="modelo" name="modelo" maxlength="50" value="<?php echo $anuncio['produto'][0]['modelo'];?>">
-                          </div>
-          </div>
-          <div class="container">
-            <div class="row">
-            <div class="col-sm-3 imgUp">
-              <div class="imagePreview"><img class="imagePreview" src="<?php echo $anuncio['produto'][0]['foto'];?>"></div>
-              <input type="hidden" id="idProduto" name="idProduto" value="<?php echo $anuncio['produto'][0]['id_produto'];?>">
-                          
->>>>>>> f4f6e3da636b04e919869f55f2e89918f5523506
-            </div>
-              <i class="fa fa-plus imgAdd"></i>
-                          <div class="col-sm-5 form-group">
-                              <label for="cor"> Cor:</label>
-                              <input disabled type="text" class="form-control" id="cor" name="cor" maxlength="50" value="<?php echo $anuncio['produto'][0]['cor'];?>">
-                              <input  type="hidden" class="form-control" id="cor" name="cor" maxlength="50" value="<?php echo $anuncio['produto'][0]['cor'];?>">
-                          </div>
-                          <div class="col-sm-5 form-group">
-                              <label for="ano"> Ano:</label>
-                              <input disabled type="text" class="form-control" id="ano" name="ano" maxlength="50" value="<?php echo $anuncio['produto'][0]['ano'];?>">
-                              <input  type="hidden" class="form-control" id="ano" name="ano" maxlength="50" value="<?php echo $anuncio['produto'][0]['ano'];?>">
-                          </div>
-                          <div class="col-sm-5 form-group">
-                              <label for="name"> Descrição:</label>
-                              <textarea disabled class="form-control" type="textarea" id="descricao" name="descricao"  maxlength="6000" rows="2"><?php echo $anuncio['produto'][0]['produtocol'];?></textarea>
-                              <input  class="form-control" type="hidden" id="descricao" name="descricao"  value = "<?php echo $anuncio['produto'][0]['produtocol'];?>">
-                          </div>
-          </div>
-                      </div>
-                      <?php 
                       if(isset($_SESSION['user'])) {
                           echo '
                           <div class="row">
@@ -291,9 +209,10 @@ uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url(
                               </div>
                           </div>';
                       }
-                      
-                      ?>
-                  </form>
+                        
+                        ?>
+                    </form>
+               
               </div>
           </div>
       </div>
