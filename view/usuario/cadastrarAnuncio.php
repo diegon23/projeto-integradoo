@@ -84,6 +84,14 @@ body
   font-size:15px;
 }
 
+.navbar-brand {
+  padding: 0px; /* firefox bug fix */
+}
+
+.navbar-brand>img {
+  height: 100%;
+}
+
 .dropdown-menu-center {
   left: 50% !important;
   right: auto !important;
@@ -171,7 +179,9 @@ $(function() {
 		<nav class="navbar navbar-inverse">
 		  <div class="container-fluid">
 			<div class="navbar-header">
-			  <a class="navbar-brand" href="#">Meu carro, Seu carro</a>
+      <a class="navbar-brand" href="homeLocador.php" alt="">
+      <img src="../../logo.jpg">
+      </a>
 			</div>
 			<ul class="nav navbar-nav">
 			  <li><a href="homeLocador.php">Meus anúncios</a></li>

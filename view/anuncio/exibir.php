@@ -46,6 +46,14 @@
 		font-weight:bold;
 		font-size:1.4em;
 	}
+
+	.navbar-brand {
+		padding: 0px; /* firefox bug fix */
+	}
+
+	.navbar-brand>img {
+		height: 100%;
+	}
 </style>
 <script>
 	function exibeAnuncio($id){
@@ -57,7 +65,9 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="home.php">Meu Carro, Seu Carro</a>
+				<a class="navbar-brand" href="#" alt="">
+					<img src="../../logo.jpg">
+				</a>
       
 			<?php 
                         if(isset($_SESSION['user'])) {

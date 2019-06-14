@@ -86,6 +86,14 @@ body
   cursor:pointer;
   font-size:15px;
 }
+
+.navbar-brand {
+  padding: 0px; /* firefox bug fix */
+}
+
+.navbar-brand>img {
+  height: 100%;
+}
 	
 </style>
 <script>
@@ -127,7 +135,9 @@ uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url(
 		<nav class="navbar navbar-inverse">
 		  <div class="container-fluid">
 			<div class="navbar-header">
-			  <a class="navbar-brand" href="home.php">Meu carro, Seu carro</a>
+      <a class="navbar-brand" href="#" alt="">
+      <img src="../../logo.jpg">
+    </a>
 			</div>
       
             <?php 

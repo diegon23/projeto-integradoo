@@ -26,11 +26,25 @@
       margin-left:5px;
       width:100%;
     }
+
+    .navbar-brand {
+      padding: 0px; /* firefox bug fix */
+    }
+
+    .navbar-brand>img {
+      height: 100%;
+    }
  
     .datepicker { 
       margin-left: 100px;
       z-index: 1000;
       top: 0px !important;
+    }
+
+    .imageLogo>img{
+      width:20%;
+      height:10%;
+      margin-left:40%;
     }
 </style>
 
@@ -64,17 +78,20 @@
 
   <nav class="navbar navbar-inverse">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Meu carro, Seu carro</a>
+        
+    <a class="navbar-brand" href="#" alt="">
+      <img src="../../logo.jpg">
+    </a>
       
         <?php 
                         if(isset($_SESSION['user'])) {
                             echo '                 
 			<ul class="nav navbar-nav">
-      <li><a href="home.php">Procurar anúncios</a></li>
+      <li class="active"><a href="home.php">Procurar anúncios</a></li>
       <li><a href="meusAnuncios.php">Minhas Reservas</a></li>
       </ul>
       <ul class="nav navbar-nav pull-right">
-        <li class="active"><a href="../../index.php">Sair</a></li>
+        <li ><a href="../../index.php">Sair</a></li>
       </ul>
                             ';
       
@@ -82,7 +99,7 @@
                           echo '
                           
       <ul class="nav navbar-nav pull-right">
-      <li class="active"><a href="../../login.php">Login</a></li>
+      <li ><a href="../../login.php">Login</a></li>
     </ul>
                           ';
                         }
@@ -92,6 +109,9 @@
   </nav>
     
   <form role="form" method="POST" action="exibir.php">
+    <div class="imageLogo">
+      <img src="../../logo.jpg">
+    </div>
     <div class="container">
       <div class="col-md-6 col-md-offset-3">
         <h2 style="text-align:center">Buscar Anúncio</h2>

@@ -42,13 +42,23 @@
 	font-weight:bold;
 	font-size:1.4em;
 }
+
+.navbar-brand {
+	padding: 0px; /* firefox bug fix */
+}
+
+.navbar-brand>img {
+	height: 100%;
+}
 </style>
 <body>
 
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Meu Carro, Seu Carro</a>
+		<a class="navbar-brand" href="#" alt="">
+      <img src="../../logo.jpg">
+    </a>
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="#">Meus anúncios</a></li>
