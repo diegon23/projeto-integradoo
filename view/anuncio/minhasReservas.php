@@ -15,7 +15,7 @@
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>Meu Carro, Seu Carro - Cadastrar Carros</title>
+      <title>Meu Carro, Seu Carro</title>
       <!-- Latest compiled and minified CSS -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
       <!-- Optional theme -->
@@ -139,14 +139,14 @@ body
                             
         <ul class="nav navbar-nav">
         <li><a href="home.php">Procurar anúncios</a></li>
-        <li class="active"><a href="meusAnuncios.php">Minhas Reservas</a></li>
+        <li class="active"><a href="minhasReservas.php">Minhas Reservas</a></li>
         </ul>
         <ul class="nav navbar-nav pull-right">
             <li class="active"><a href="../../index.php">Sair</a></li>
         </ul>
 		  </div>
 		</nav>
-  <h3>Meus Anúncios</h3>
+  <h3>Minhas Reservas</h3>
 
 
 <?php

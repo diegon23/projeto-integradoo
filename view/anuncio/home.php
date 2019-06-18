@@ -88,7 +88,7 @@
                             echo '                 
 			<ul class="nav navbar-nav">
       <li class="active"><a href="home.php">Procurar anúncios</a></li>
-      <li><a href="meusAnuncios.php">Minhas Reservas</a></li>
+      <li><a href="minhasReservas.php">Minhas Reservas</a></li>
       </ul>
       <ul class="nav navbar-nav pull-right">
         <li ><a href="../../index.php">Sair</a></li>

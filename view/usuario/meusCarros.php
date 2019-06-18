@@ -61,10 +61,10 @@
     </a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Meus anúncios</a></li>
+      <li><a href="homeLocador.php">Meus anúncios</a></li>
       <li><a href="carros.html">Cadastrar Carros</a></li>
       <li><a href="cadastrarAnuncio.php">Cadastrar Anúncio</a></li>
-      <li><a href="meusCarros.php">Meus Carros</a></li>
+      <li class="active"><a href="meusCarros.php">Meus Carros</a></li>
     </ul>
       
 		<ul class="nav navbar-nav pull-right">
@@ -74,33 +74,15 @@
 </nav>
   
 <div class="container">
-  <h3>Meus Anúncios</h3>
-
+  <h3>Meus Carros</h3>
 
 <?php
-	$anuncios = getAnuncios($usuario["id_usuario"]);
-	foreach($anuncios as $anuncio){
-		//buscar localidade
-		$anuncio['localidade'] = getLocalidade($anuncio['local_retirada']);
-		//buscar produto
-		$anuncio['produto'] = getCarro($anuncio['id_produto']);
-		
-		$anuncio['aluguel'] = getAluguelProduto($anuncio['id_produto']);
-		
-		if($anuncio['aluguel'] != null && sizeof($anuncio['aluguel']) > 0){
-			$anuncio['usuarioLocatario'] = getUserId($anuncio['aluguel'][0]['id_usuario_locatario']);
-
-			$texto = '<p style="background: rgba(242, 38, 19, 1)">Indisponível</p></div>
-			<div class="producttitle">'.$anuncio['usuarioLocatario'][0]['telefone'].'</div>
-			';
-		} else {
-			$texto = "<p style='background: rgba(0, 230, 64, 1);'>Disponível</p></div>";
-		}
+	$carros = getCarrosUsuario($usuario["id_usuario"]);
+	foreach($carros as $carro){
 		echo '
 		<div class="col-md-2 column productbox">
-		<img src="'.$anuncio['produto'][0]['foto'].'" class="img-responsive">
-		<div class="producttitle">'.$anuncio['produto'][0]['modelo'].'</div>
-		<div class="productprice"><div class="pull-right">'.$texto.'<div class="pricetext">R$'.$anuncio['valor_dia'].'</div></div>
+		<img src="'.$carro['foto'].'" class="img-responsive">
+		<div class="producttitle">'.$carro['modelo'].' - '.$carro['cor'].' - '.$carro['ano'].'</div>
 		</div>';
 	}
 ?>

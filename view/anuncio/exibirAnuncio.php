@@ -19,7 +19,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Meu Carro, Seu Carro - Cadastrar Carros</title>
+        <title>Meu Carro, Seu Carro</title>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
         <!-- Optional theme -->
@@ -145,7 +145,7 @@ uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url(
                             echo '
 			<ul class="nav navbar-nav">
             <li><a href="home.php">Procurar anúncios</a></li>
-            <li><a href="meusAnuncios.php">Meus Anuncios</a></li>
+            <li><a href="minhasReservas.php">Meus Anuncios</a></li>
             </ul>
             <ul class="nav navbar-nav pull-right">
                 <li class="active"><a href="../../index.php">Sair</a></li>

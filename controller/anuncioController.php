@@ -9,7 +9,7 @@
 if(isset($_GET['idAluguel'])){
 	deleteAluguel($_GET['idAluguel']);
 	
-	header("Location: ../view/anuncio/meusAnuncios.php");
+	header("Location: ../view/anuncio/minhasReservas.php");
 } else {
 	$anuncio["id_usuario"] = $_SESSION["user"][0]["id_usuario"];
 	

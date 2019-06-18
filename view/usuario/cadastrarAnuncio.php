@@ -11,7 +11,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Meu carro, Seu Carro - Cadastrar Anúncio</title>
+        <title>Meu carro, Seu Carro</title>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
         <!-- Optional theme -->
@@ -187,6 +187,7 @@ $(function() {
 			  <li><a href="homeLocador.php">Meus anúncios</a></li>
 			  <li><a href="carros.html">Cadastrar Carros</a></li>
 			  <li class="active"><a href="cadastrarAnuncio.php">Cadastrar Anúncio</a></li>
+      <li><a href="meusCarros.php">Meus Carros</a></li>
 			</ul>
       
       <ul class="nav navbar-nav pull-right">
@@ -196,7 +197,7 @@ $(function() {
 		</nav>
         <div class="container">
                 <div class="col-md-6 col-md-offset-3">
-                    <h2 style="text-align:center">Salvar Carro</h2>
+                    <h2 style="text-align:center">Salvar Anúncio</h2>
                     <form role="form" method="post" action="../../controller/anuncioController.php">
                         <input type="hidden" name="idCarro" id="idCarro">
                         <div class="row">
